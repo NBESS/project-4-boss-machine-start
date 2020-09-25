@@ -1,7 +1,12 @@
 const express = require('express');
 const app = express();
 
+
 module.exports = app;
+
+const morgan = require('morgan');
+app.use(morgan('short'))
+
 
 /* Do not change the following line! It is required for testing and allowing
 *  the frontend application to interact as planned with the api server
@@ -27,6 +32,8 @@ app.use('/api/minions', minionsRouter);
 const ideasRouter = require('./server/router/ideasRouter');
 app.use('/api/ideas', ideasRouter);
 
+const meetingsRouter = require('./server/router/meetingsRouter');
+app.use('/api/meetings', meetingsRouter);
 
 // This conditional is here for testing purposes:
 if (!module.parent) {
